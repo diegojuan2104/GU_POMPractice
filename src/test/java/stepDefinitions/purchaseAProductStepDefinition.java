@@ -30,7 +30,7 @@ public class purchaseAProductStepDefinition  {
     loginPage.enterUsername("standard_user");
     loginPage.enterPassword("secret_sauce");
   }
-  @Given("I select a random product")
+  @When("I select a random product")
   public void iSelectARandomProduct() {
     inventoryPage = loginPage.clickOnSubmitBtn();
     inventoryPage.addRandomProduct();

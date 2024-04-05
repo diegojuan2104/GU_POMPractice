@@ -29,7 +29,7 @@ public class removeElementsFromCartStepDefinition {
     loginPage.enterPassword("secret_sauce");
     inventoryPage = loginPage.clickOnSubmitBtn();
   }
-    @Given("I have added {int} different elements to the shopping cart")
+    @When("I have added {int} different elements to the shopping cart")
     public void iHaveAddedDifferentElementsToTheShoppingCart(int arg0) {
       for (int i = 0; i < arg0; i++) {
         inventoryPage.addProductByIndex(i);
