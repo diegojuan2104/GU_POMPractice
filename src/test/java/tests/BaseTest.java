@@ -5,6 +5,7 @@ import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -17,9 +18,16 @@ public class BaseTest {
     LoginPage loginPage;
     @BeforeClass
     public void setUp() {
-        //System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        String browser = System.getProperty("browser");
+        if(browser.equals("Firefox")) {
+            WebDriverManager.firefoxdriver().setup();
+            driver = new FirefoxDriver();
+        }
+        else {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+        }
+        
         PageFactory.initElements(driver, this);
         goToLogin();
     }
